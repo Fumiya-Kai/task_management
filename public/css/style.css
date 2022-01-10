@@ -1,0 +1,301 @@
+@charset "utf-8";
+
+html {
+  /* height: 100%; */
+}
+
+body {
+  /* height: 100%; */
+  background-color: rgba(221, 238, 238, 0.8);
+}
+
+.clearfix:after{
+  content: "";
+  clear: both;
+  display: block;
+}
+
+header {
+  position: fixed;
+  height: 50px;
+  width: 100%;
+  background-color: #fff;
+  margin-top: -50px;
+}
+
+.fa-project-diagram {
+  float: left;
+  color: #0dd;
+}
+
+.site-title {
+  padding: 15px;
+}
+
+.title {
+  float: left;
+}
+
+main {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  margin-top: 50px;
+}
+
+.menu {
+  position: fixed;
+  display: block;
+  height: 100vh;
+  width: 15%;
+  background-color: #6ce;
+}
+
+.nav-wrapper {
+  padding: 20px;
+}
+
+.nav-title {
+  font-size: 30px;
+  color: #555;
+}
+
+.nav-item {
+  margin: 20px 0;
+  font-size: 20px;
+  color: #fff;
+}
+
+.content {
+  display: block;
+  width: 85%;
+  margin-left: 15%;
+  padding: 50px;
+}
+
+th, td {
+  text-align: center;
+  vertical-align: middle;
+  table-layout: fixed;
+}
+
+.page-title {
+  font-size: 30px;
+  font-weight: bold;
+  /* margin: 50px 0 0 50px; */
+  color: rgba(130, 150, 150, 1);
+}
+
+.page-title:after {
+  display: block;
+  content: '';
+  width: 100%;
+  height: 1px;
+  margin-top: 10px;
+  background-color: rgba(130, 150, 150, 1);
+}
+
+.contents-wrapper {
+  margin: 50px 15px 0 15px;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.btn {
+  height: 40px;
+  width: 60px;
+  margin-bottom: 30px;
+  background-color: #00f;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+  color: #fff;
+  transition: 0.5s;
+}
+
+/* index */
+
+.add-link {
+  display: block;
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.btn-add:hover {
+  background-color: #00c;
+}
+
+.targets-table {
+  width: 100%;
+}
+
+.row-index {
+  height: 50px;
+  width: 100%;
+}
+
+.thead-index {
+  background-color: rgba(180, 200, 200, 0.5);
+}
+
+.tr-index {
+  border-bottom: 1px solid rgba(180, 200, 200, 0.5);
+}
+
+.target-data {
+  transition: 0.5s;
+  background-color: #fff;
+}
+
+.target-data:hover {
+  background-color: #def;
+}
+
+.paginater {
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.page-item {
+  padding: 10px;
+  border-left: 1px solid #9aa;
+  background-color: rgba(221, 238, 238, 0.8);
+}
+
+.page-item:first-child {
+  border-radius: 5px 0 0 5px;
+}
+
+.page-item:last-child {
+  border-right: 1px solid #9aa;
+  border-radius: 0 5px 5px 0;
+}
+
+/* create */
+
+.label {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 20px 0 5px 0;
+}
+
+.form-content {
+  border: 1px solid #9aa;
+  border-radius: 5px;
+}
+
+.text-form {
+  width: 100%;
+  padding: 5px;
+}
+
+.title-form {
+  height: 35px;
+}
+
+.task-form {
+  height: 25px;
+  font-size: 15px;
+}
+
+.btn-create {
+  float: right;
+  margin: 10px 0 0 0;
+}
+
+.task-table {
+  margin: 0 auto;
+}
+
+.order-form {
+  width: 30px;
+}
+
+/* show */
+
+.show-wrapper {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.target-show {
+  margin: 0 auto;
+}
+
+.target-title-box {
+  margin: 0 auto;
+  padding-bottom: 10px;
+  text-align: center;
+  border-bottom: 2px solid #000;
+}
+
+.target-title {
+  display:inline-block;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.target-detail-box {
+  margin: 20px 10px;
+}
+
+.target-detail {
+  font-size: 20px;
+}
+
+.task-label-show {
+  margin: 30px 0 10px 10px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.task-show {
+  width: 100%;
+  border: 1px solid rgba(180, 200, 200, 0.5);
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 10px;
+}
+
+.task-data td {
+  border-bottom: 1px solid rgba(180, 200, 200, 0.5);
+}
+
+.task-data:last-child td{
+  border-bottom: 0;
+}
+
+.task-data-head th:first-child  {
+  border-radius: 10px 0 0 0;
+}
+
+.task-data-head th:last-child  {
+  border-radius: 0 10px 0 0;
+}
+
+.task-data:last-child td:first-child {
+  border-radius: 0 0 10px 0;
+}
+.task-data:last-child td:last-child {
+  border-radius: 0 0 0 10px;
+}
+
+.check {
+  cursor: pointer;
+}
+
+.no-checked {
+  color: rgba(200, 200, 200, 0.4);
+}
+
+.btn-edit {
+  padding: 10px 0;
+  cursor: pointer;
+}
