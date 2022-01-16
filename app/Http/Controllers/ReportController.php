@@ -31,4 +31,10 @@ class ReportController extends Controller
         $this->report->saveNew($input);
         return redirect()->route('report.index');
     }
+
+    public function show($reportId)
+    {
+        $report = $this->report->find($reportId);
+        return view('report.show', compact('report'));
+    }
 }
