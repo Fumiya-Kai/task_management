@@ -9,7 +9,7 @@
         <p class="target-title">{{ $target->title }}</p>
       </div>
       <div class="target-detail-box">
-        <p class="target-detail">{{ $target->content }}</p>
+        <p class="target-detail">{!! nl2br($target->content) !!}</p>
       </div>
     </div>
     <p class="task-label-show">タスク</p>

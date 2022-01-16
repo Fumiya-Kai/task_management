@@ -9,7 +9,7 @@
         <p class="target-title">{{ $report->title }}</p>
       </div>
       <div class="target-detail-box">
-        <p class="target-detail">{{ $report->content }}</p>
+        <p class="target-detail">{!! nl2br($report->content) !!}</p>
       </div>
     </div>
     <a href="{{ route('report.edit', $report->id) }}">
