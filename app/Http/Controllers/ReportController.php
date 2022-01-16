@@ -19,4 +19,9 @@ class ReportController extends Controller
         $reports = $this->report->getReports();
         return view('report.index', compact('reports'));
     }
+
+    public function create()
+    {
+        return view('report.create');
+    }
 }
