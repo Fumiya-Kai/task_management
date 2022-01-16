@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Report;
 use Illuminate\Http\Request;
 
-class DailyReportController extends Controller
+class ReportController extends Controller
 {
     private $report;
 
@@ -17,6 +17,6 @@ class DailyReportController extends Controller
     public function index()
     {
         $reports = $this->report->getReports();
-        return view('index', compact('reports'));
+        return view('report.index', compact('reports'));
     }
 }
