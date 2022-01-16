@@ -2,18 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Report;
 use Illuminate\Http\Request;
 
 class DailyReportController extends Controller
 {
-    public function __construct()
+    private $report;
+
+    public function __construct(Report $report)
     {
-        return;
+        $this->report = $report;
     }
 
     public function index()
     {
-        $reports = $this->report->get();
+        $reports = $this->report->getReports();
         return view('index', compact('reports'));
     }
 }
