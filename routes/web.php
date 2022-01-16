@@ -16,6 +16,7 @@ Route::group(['prefix' => '/'], function () {
         return redirect()->route('target.index');
     });
     Route::resource('target', 'TargetController');
+    Route::resource('report', 'ReportController');
 
     // Route::group(['prefix' => 'api', 'namespace' => 'Api'], function () {
     //     Route::put('task/{taskId}', 'TaskController@update');
