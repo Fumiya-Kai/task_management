@@ -25,4 +25,9 @@ class Report extends Model
     {
         $this->fill($input)->save();
     }
+
+    public function saveUpdated($reportId,$input)
+    {
+        $this->find($reportId)->fill($input)->save();
+    }
 }

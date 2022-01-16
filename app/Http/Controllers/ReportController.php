@@ -37,4 +37,17 @@ class ReportController extends Controller
         $report = $this->report->find($reportId);
         return view('report.show', compact('report'));
     }
+
+    public function edit($reportId)
+    {
+        $report = $this->report->find($reportId);
+        return view('report.edit', compact('report'));
+    }
+
+    public function update(Request $request, $reportId)
+    {
+        $input = $request->all();
+        $this->report->saveUpdated($reportId, $input);
+        return redirect()->route('report.index');
+    }
 }
