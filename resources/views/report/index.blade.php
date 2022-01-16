@@ -13,7 +13,7 @@
     </thead>
     <tbody>
       @foreach ($reports as $report)
-      <tr class="row-index tr-index target-data" data-report-id="{{ $report->id }}">
+      <tr class="row-index tr-index report-data" data-report-id="{{ $report->id }}">
         <td class="col col1" width="30%">{{ $report->report_time->format('Y/m/d(D)')}}</td>
         <td class="col col2" width="70%">{{ $report->title }}</td>
       </tr>
@@ -23,5 +23,7 @@
   <div class="paginater">
   </div>
 </div>
+
+<script src="{{ asset('js/report/index.js') }}"></script>
 
 @endsection
