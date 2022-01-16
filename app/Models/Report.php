@@ -12,8 +12,17 @@ class Report extends Model
         'report_time'
     ];
 
+    protected $dates = [
+        'report_time',
+    ];
+
     public function getReports()
     {
         return $this->get();
+    }
+
+    public function saveNew($input)
+    {
+        $this->fill($input)->save();
     }
 }

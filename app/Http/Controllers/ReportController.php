@@ -24,4 +24,11 @@ class ReportController extends Controller
     {
         return view('report.create');
     }
+
+    public function store(Request $request)
+    {
+        $input = $request->all();
+        $this->report->saveNew($input);
+        return redirect()->route('report.index');
+    }
 }

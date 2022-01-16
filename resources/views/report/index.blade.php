@@ -14,7 +14,7 @@
     <tbody>
       @foreach ($reports as $report)
       <tr class="row-index tr-index target-data" data-report-id="{{ $report->id }}">
-        <td class="col col1" width="30%">{{ $report->report_time->format('m/d(D)')}}</td>
+        <td class="col col1" width="30%">{{ $report->report_time->format('Y/m/d(D)')}}</td>
         <td class="col col2" width="70%">{{ $report->title }}</td>
       </tr>
       @endforeach
