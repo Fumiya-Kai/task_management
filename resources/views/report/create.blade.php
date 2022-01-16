@@ -5,7 +5,7 @@
 <div class="contents-wrapper">
   <form class="clearfix" action="{{ route('report.store') }}" method="POST">
     @csrf
-    <p class="label">開始日</p>
+    <p class="label">日付</p>
     <input class="form-content" name="report_time" type="date">
     <p class="label">タイトル</p>
     <input class="form-content text-form title-form" name="title" type="text" placeholder="日報のタイトルを入力">
