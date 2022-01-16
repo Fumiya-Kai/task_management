@@ -1,7 +1,7 @@
 @extends('common.user')
 @section('content')
 
-<h1 class="page-title">目標新規作成</h1>
+<h1 class="page-title">日報新規作成</h1>
 <div class="contents-wrapper">
   <form class="clearfix" action="{{ route('report.store') }}" method="POST">
     @csrf
