@@ -29,7 +29,7 @@
                 <a href="">カレンダー</a>
               </li>
               <li class="nav-item">
-                <a href="">日報</a>
+                <a href="{{ route('report.index') }}">日報</a>
               </li>
             </ul>
           </div>
