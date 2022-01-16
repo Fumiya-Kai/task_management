@@ -43,14 +43,10 @@ class Target extends Model
                     $taskData += array('target_id' => $targetId,
                                       'created_at' => Carbon::now(),
                                       'updated_at' => Carbon::now());
-                    print_r('a');
-                    print_r($count);
                     $task = new Task();
                     $task->fill($taskData)->save();
                     $count += 1;
                 } else {
-                    print_r('a');
-                    print_r($count);
                     $task = Task::find($taskData['id']);
                     unset($taskData['id']);
                     $task->fill($taskData)->save();
