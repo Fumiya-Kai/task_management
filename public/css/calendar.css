@@ -1,0 +1,73 @@
+@charset "utf-8";
+
+
+/* grid setting by weeks count*/
+.calendar {
+    display: grid;
+    grid-template-columns: 40px 40px 40px 40px 40px 40px 40px;
+}
+
+.weeks-4 {
+    grid-template-rows: 20px 50px 50px 50px 50px;
+}
+
+.weeks-5 {
+    grid-template-rows: 20px 50px 50px 50px 50px 50px;
+}
+
+.weeks-6 {
+    grid-template-rows: 20px 50px 50px 50px 50px 50px 50px;
+}
+
+/* place setting by class */
+.sun {
+    grid-column: 1;
+}
+
+.mon {
+    grid-column: 2;
+}
+
+.tue {
+    grid-column: 3;
+}
+
+.wed {
+    grid-column: 4;
+}
+
+.thu {
+    grid-column: 5;
+}
+
+.fri {
+    grid-column: 6;
+}
+
+.sat {
+    grid-column: 7;
+}
+
+.week-1 {
+    grid-row: 1;
+}
+
+.week-2 {
+    grid-row: 2;
+}
+
+.week-3 {
+    grid-row: 3;
+}
+
+.week-4 {
+    grid-row: 4;
+}
+
+.week-5 {
+    grid-row: 5;
+}
+
+.week-6 {
+    grid-row: 6;
+}
