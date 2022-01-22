@@ -34,11 +34,11 @@ class CreateCalendar {
             'data' => [],
         ];
 
-        $period = CarbonPeriod::create($date->startOfMonth(), $date->endOfMonth());
+        $period = CarbonPeriod::create($date->startOfMonth()->format('Y-m-d'), $date->endOfMonth()->format('Y-m-d'));
 
         foreach ($period as $oneDay) {
-            $week = $oneDay->weekNumberInMonth;
-            $day_of_week = strtolower($oneDay->format('D'));
+            $week = ($oneDay->dayOfWeek === 0)? $oneDay->weekNumberInMonth + 1 : $oneDay->weekNumberInMonth;
+            $day_of_week = $oneDay->dayOfWeek;
             $day = $oneDay->day;
 
             $dateArray = [
@@ -49,6 +49,8 @@ class CreateCalendar {
 
             $calendarData['data'][] = $dateArray;
         }
+
+        $calendarData = collect($calendarData);
 
         return $calendarData;
     }

@@ -17,6 +17,7 @@ Route::group(['prefix' => '/'], function () {
     });
     Route::resource('target', 'TargetController');
     Route::resource('report', 'ReportController');
+    Route::resource('calendar', 'CalendarController');
 
     // Route::group(['prefix' => 'api', 'namespace' => 'Api'], function () {
     //     Route::put('task/{taskId}', 'TaskController@update');

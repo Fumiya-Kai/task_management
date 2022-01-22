@@ -7,6 +7,7 @@
     <title>タスク管理</title>
     <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/calendar.css') }}">
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   </head>
@@ -26,7 +27,7 @@
                 <a href="{{ route('target.index') }}">目標</a>
               </li>
               <li class="nav-item">
-                <a href="">カレンダー</a>
+                <a href="{{ route('calendar.index') }}">カレンダー</a>
               </li>
               <li class="nav-item">
                 <a href="{{ route('report.index') }}">日報</a>
