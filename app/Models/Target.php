@@ -64,12 +64,5 @@ class Target extends Model
             }, $array);
     }
 
-    private function addDataForUpdate($array)
-    {
-        return array_map(function ($taskData) {
-            return $taskData += array('updated_at' => Carbon::now());
-            }, $array);
-    }
-
 
 }
