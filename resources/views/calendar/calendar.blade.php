@@ -3,6 +3,11 @@
 
 <h1 class="page-title">カレンダー</h1>
 <div class="contents-wrapper">
+  <div class="month-header">
+    <div class="month-pager month-back"><</div>
+    <div class="month">{{ $calendarData->get('year'). '年'. $calendarData->get('month'). '月' }}</div>
+    <div class="month-pager month-next">></div>
+  </div>
   <div class="calendar {{ 'weeks-'. $calendarData->get('weeks') }}">
     <div class="calendar-cell day-header day-0">日</div>
     <div class="calendar-cell day-header day-1">月</div>
@@ -10,9 +15,12 @@
     <div class="calendar-cell day-header day-3">水</div>
     <div class="calendar-cell day-header day-4">木</div>
     <div class="calendar-cell day-header day-5">金</div>
-    <div class="calendar-cell day-header day-6">土</div>
+    <div class="calendar-cell day-header day-6 border_r">土</div>
     @foreach ($calendarData->get('data') as $date)
-    <div class="calendar-cell {{ 'week-'. $date['week']. ' '. 'day-'. $date['day_of_week'] }}">
+    <div class="calendar-cell
+    @if ($date['day_of_week'] === 6) border_r @endif
+    @if ($date['week'] === $calendarData->get('weeks')) border_b @endif
+    {{ 'week-'. $date['week']. ' '. 'day-'. $date['day_of_week'] }}">
       <p>{{ $date['day'] }}</p>
     </div>
     @endforeach

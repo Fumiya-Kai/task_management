@@ -1,27 +1,62 @@
 @charset "utf-8";
 
+.month-header {
+    display: flex;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #000;
+    justify-content: space-evenly;
+    font-size: 40px;
+}
+
+.month-pager {
+    width: 50px;
+    height: 50px;
+    background-color: #eee;
+    border-radius: 50%;
+    font-size: 40px;
+    text-align: center;
+    align-self: center;
+}
+
+.calendar-cell {
+    border-top: 1px solid #666;
+    border-left: 1px solid #666;
+    text-align: center;
+    padding-top: 5px;
+}
+
+.border_r {
+    border-right: 1px solid #666;
+}
+
+.border_b {
+    border-bottom: 1px solid #666;
+}
 
 /* grid setting by weeks count*/
 .calendar {
     display: grid;
-    grid-template-columns: 40px 40px 40px 40px 40px 40px 40px;
+    grid-template-columns: 100px 100px 100px 100px 100px 100px 100px;
+    justify-content: center;
 }
 
 .weeks-4 {
-    grid-template-rows: 20px 50px 50px 50px 50px;
+    grid-template-rows: 30px 110px 110px 110px 110px;
 }
 
 .weeks-5 {
-    grid-template-rows: 20px 50px 50px 50px 50px 50px;
+    grid-template-rows: 30px 110px 110px 110px 110px 110px;
 }
 
 .weeks-6 {
-    grid-template-rows: 20px 50px 50px 50px 50px 50px 50px;
+    grid-template-rows: 30px 110px 110px 110px 110px 110px 110px;
 }
 
 /* place setting by class */
 .day-header {
     grid-row: 1;
+    background-color: #ddd;
 }
 
 .day-0 {
