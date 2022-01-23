@@ -36,12 +36,9 @@ class Target extends Model
     {
         DB::transaction(function () use ($targetId, $input) {
             $this->find($targetId)->fill($input['targetData'])->save();
-            $input['taskData'] = $this->addDataForUpdate($input['taskData']);
             foreach ($input['taskData'] as $taskData) {
                 if (!array_key_exists('id', $taskData)) {
-                    $taskData += array('target_id' => $targetId,
-                                      'created_at' => Carbon::now(),
-                                      'updated_at' => Carbon::now());
+                    $taskData += array('target_id' => $targetId);
                     $task = new Task();
                     $task->fill($taskData)->save();
                 } else {
