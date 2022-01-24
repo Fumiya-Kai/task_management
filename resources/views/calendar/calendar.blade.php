@@ -4,9 +4,9 @@
 <h1 class="page-title">カレンダー</h1>
 <div class="contents-wrapper">
   <div class="month-header">
-    <div class="month-pager month-back"><</div>
+    <a href="{{ route('calendar.index', 'day='. $calendarData->get('last')) }}"><div class="month-pager month-back"><</div></a>
     <div class="month">{{ $calendarData->get('year'). '年'. $calendarData->get('month'). '月' }}</div>
-    <div class="month-pager month-next">></div>
+    <a href="{{ route('calendar.index', 'day='. $calendarData->get('next')) }}"><div class="month-pager month-next">></div></a>
   </div>
   <div class="calendar {{ 'weeks-'. $calendarData->get('weeks') }}">
     <div class="calendar-cell day-header day-0">日</div>

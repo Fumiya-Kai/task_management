@@ -25,22 +25,29 @@ class CreateCalendar {
     //    }
     // };
 
-    public function calendar($day = null)
+    public function calendar($day = 'now')
     {
-        $date = Carbon::now();
+        $date = Carbon::create($day);
+        $startOfMonth = $date->copy()->startOfMonth();
+        $endOfMonth = $date->copy()->endOfMonth();
+        $weeks = $date->copy()->endOfMonth()->weekNumberInMonth + (int)$this->isSunday($endOfMonth) - (int)$this->isSunday($startOfMonth);
         $calendarData = [
             'year' => $date->year,
             'month' => $date->month,
-            'weeks' => $date->endOfMonth()->weekNumberInMonth,
+            'weeks' => $weeks,
+            'last' => $date->copy()->subMonthsNoOverflow()->format('Y-m'),
+            'next' => $date->copy()->addMonthsNoOverflow()->format('Y-m'),
             'data' => [],
         ];
 
-        $calendarData = $this->paddingStart($calendarData, $date);
+        if (!$this->isSunday($startOfMonth)) {
+            $calendarData = $this->paddingStart($calendarData, $date);
+        }
 
         $period = CarbonPeriod::create($date->copy()->startOfMonth()->format('Y-m-d'), $date->copy()->endOfMonth()->format('Y-m-d'));
 
         foreach ($period as $oneDay) {
-            $week = ($oneDay->dayOfWeek === 0)? $oneDay->weekNumberInMonth + 1 : $oneDay->weekNumberInMonth;
+            $week = $oneDay->weekNumberInMonth + (int)$this->isSunday($oneDay) - (int)$this->isSunday($startOfMonth);
             $day_of_week = $oneDay->dayOfWeek;
             $day = $oneDay->day;
 
@@ -53,7 +60,9 @@ class CreateCalendar {
             $calendarData['data'][] = $dateArray;
         }
 
-        $calendarData = $this->paddingEnd($calendarData, $date);
+        if ($date->copy()->endOfMonth()->dayOfWeek  !== 6) {
+            $calendarData = $this->paddingEnd($calendarData, $date);
+        }
 
         $calendarData = collect($calendarData);
 
@@ -83,7 +92,7 @@ class CreateCalendar {
 
     protected function paddingEnd($calendarData, $date)
     {
-        $endDate = $date->copy()->endOfMonth()->addDays(6 - $date->endOfMonth()->dayOfWeek);
+        $endDate = $date->copy()->endOfMonth()->addDays(6 - $date->copy()->endOfMonth()->dayOfWeek);
         $period = CarbonPeriod::create($endDate->copy()->startOfMonth()->format('Y-m-d'), $endDate->format('Y-m-d'));
 
         foreach ($period as $oneDay) {
@@ -91,7 +100,7 @@ class CreateCalendar {
             $day = $oneDay->day;
 
             $dateArray = [
-                'week' => $date->endOfMonth()->weekNumberInMonth,
+                'week' => $calendarData['weeks'],
                 'day_of_week' => $day_of_week,
                 'day' => $day,
             ];
@@ -100,6 +109,11 @@ class CreateCalendar {
         }
 
         return $calendarData;
+    }
+
+    protected function isSunday($date)
+    {
+        return $date->dayOfWeek === 0;
     }
 
 }
