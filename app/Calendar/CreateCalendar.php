@@ -54,9 +54,9 @@ class CreateCalendar {
         if ($this->isSunday($startOfMonth)) {
             return $calendarData;
         } else {
-            $startDate = $startOfMonth->subDays($startOfMonth->dayOfWeek);
+            $startDate = $startOfMonth->copy()->subDays($startOfMonth->dayOfWeek);
             $period = CarbonPeriod::create($startDate->format('Y-m-d'), $startDate->copy()->endOfMonth()->format('Y-m-d'));
-            return $this->createCalendarData($calendarData, $period, 1);
+            return $this->createCalendarData($calendarData, $period, 1, null);
         }
     }
 
@@ -65,7 +65,7 @@ class CreateCalendar {
         if ($endOfMonth->dayOfWeek  === 6) {
             return $calendarData;
         } else {
-            $endDate = $endOfMonth->addDays(6 - $endOfMonth->dayOfWeek);
+            $endDate = $endOfMonth->copy()->addDays(6 - $endOfMonth->dayOfWeek);
             $period = CarbonPeriod::create($endDate->copy()->startOfMonth()->format('Y-m-d'), $endDate->format('Y-m-d'));
             return $this->createCalendarData($calendarData, $period, $calendarData['weeks']);
         }
