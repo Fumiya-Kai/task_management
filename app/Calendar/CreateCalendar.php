@@ -2,6 +2,7 @@
 
 namespace App\Calendar;
 
+use App\Models\Task;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 
@@ -15,6 +16,9 @@ class CreateCalendar {
     //        week: 1,
     //        day_of_week: mon,
     //        day: *,
+    //        start_task: *,
+    //        task_in_progress: *,
+    //        completed_task: *
     //      },
     //      {
     //        week: 1,
@@ -82,6 +86,9 @@ class CreateCalendar {
                     'week' => $week,
                     'day_of_week' => $day_of_week,
                     'day' => $day,
+                    'start_tasks' => $this->countStartTasks($oneDay),
+                    'tasks_in_progress' => $this->countTasksInProgress($oneDay),
+                    'completed_tasks' => $this->countCompletedTasks($oneDay),
                 ];
 
                 $calendarData['data'][] = $dateArray;
@@ -96,6 +103,9 @@ class CreateCalendar {
                     'week' => $week,
                     'day_of_week' => $day_of_week,
                     'day' => $day,
+                    'start_tasks' => $this->countStartTasks($oneDay),
+                    'tasks_in_progress' => $this->countTasksInProgress($oneDay),
+                    'completed_tasks' => $this->countCompletedTasks($oneDay),
                 ];
 
                 $calendarData['data'][] = $dateArray;
@@ -110,5 +120,22 @@ class CreateCalendar {
         return $date->dayOfWeek === 0;
     }
 
+    protected function countStartTasks($date)
+    {
+        $task = new Task();
+        return $task->countStartTasks($date);
+    }
+
+    protected function countTasksInProgress($date)
+    {
+        $task = new Task();
+        return $task->countTasksInProgress($date);
+    }
+
+    protected function countCompletedTasks($date)
+    {
+        $task = new Task();
+        return $task->countCompletedTasks($date);
+    }
 
 }

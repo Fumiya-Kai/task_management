@@ -15,6 +15,25 @@ class Task extends Model
         'order'
     ];
 
+    public function countStartTasks($date)
+    {
+        return $this->whereDate('start', '=', $date->format('Y-m-d'))
+                    ->count();
+    }
+
+    public function countTasksInProgress($date)
+    {
+        return $this->whereDate('start', '<=', $date->format('Y-m-d'))
+                    ->whereDate('end_schedule', '>=', $date->format('Y-m-d'))
+                    ->count();
+    }
+
+    public function countCompletedTasks($date)
+    {
+        return $this->whereDate('end_schedule', '=', $date->format('Y-m-d'))
+                    ->count();
+    }
+
     public function target()
     {
         return $this->belongsTo(Target::class, 'target_id');
