@@ -46,6 +46,8 @@
     background-color: rgba(0, 0, 255, 0.5);
 }
 
+/* cakendar header */
+
 .month-header {
     display: flex;
     margin-bottom: 30px;
@@ -64,6 +66,8 @@
     text-align: center;
     align-self: center;
 }
+
+/* calendar cell setting */
 
 .calendar-cell {
     border-top: 1px solid #666;
