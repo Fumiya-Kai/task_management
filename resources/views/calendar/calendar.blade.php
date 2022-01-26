@@ -11,7 +11,7 @@
   <div class="calendar-wrapper">
     <div class="calendar-side">
       <form action="{{ route('calendar.index')}}" class="search-month-box">
-        <input type="month" name="search-month" class="month-form">
+        <input type="month" name="day" class="month-form">
         <button><i class="fa fa-search"></i></button>
       </form>
       <div class="legend start-legend">開始するタスク</div>
