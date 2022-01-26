@@ -1,5 +1,51 @@
 @charset "utf-8";
 
+/* side */
+.calendar-wrapper {
+    display: flex;
+    gap: 15px;
+}
+
+.search-month-box {
+    border: 1px solid #aaa;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    padding: 5px 10px;
+}
+
+.month-form {
+    width: 150px;
+    font-size: 15px;
+}
+
+.month-form:focus {
+    outline: 0;
+}
+
+.legend {
+    margin: 10px 0 0 10px;
+}
+
+.legend::before {
+    content: "";
+    display:inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 10px
+}
+
+.start-legend::before {
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+.in-progress-legend::before {
+    background-color: rgba(0, 255, 0, 0.5);
+}
+
+.completed-legend::before {
+    background-color: rgba(0, 0, 255, 0.5);
+}
+
 .month-header {
     display: flex;
     margin-bottom: 30px;
