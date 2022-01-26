@@ -50,10 +50,11 @@
 
 .month-header {
     display: flex;
+    justify-content: center;
+    gap: 50px;
     margin-bottom: 30px;
     padding-bottom: 10px;
     border-bottom: 3px solid #000;
-    justify-content: space-evenly;
     font-size: 40px;
 }
 
