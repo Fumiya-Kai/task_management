@@ -21,10 +21,12 @@
     @if ($date['day_of_week'] === 6) border_r @endif
     @if ($date['week'] === $calendarData->get('weeks')) border_b @endif
     {{ 'week-'. $date['week']. ' '. 'day-'. $date['day_of_week'] }}">
-      <p>{{ $date['day'] }}</p>
-      <p>{{ $date['start_tasks'] }}</p>
-      <p>{{ $date['tasks_in_progress'] }}</p>
-      <p>{{ $date['completed_tasks'] }}</p>
+      <p class="day">{{ $date['day'] }}</p>
+      <div class="day-task">
+        <div class="task-count start-tasks">{{ $date['start_tasks'] }}</div>
+        <div class="task-count tasks-in-progress">{{ $date['tasks_in_progress'] }}</div>
+        <div class="task-count completed-tasks">{{ $date['completed_tasks'] }}</div>
+      </div>
     </div>
     @endforeach
   </div>
