@@ -30,7 +30,7 @@
       <div class="calendar-cell
       @if ($date['day_of_week'] === 6) border_r @endif
       @if ($date['week'] === $calendarData->get('weeks')) border_b @endif
-      {{ 'week-'. $date['week']. ' '. 'day-'. $date['day_of_week'] }}">
+      {{ 'week-'. $date['week']. ' '. 'day-'. $date['day_of_week'] }}" data-date="{{ $calendarData->get('year'). '-'. $calendarData->get('month'). '-'. $date['day'] }}">
         <p class="day">{{ $date['day'] }}</p>
         <div class="day-task">
           <div class="task-count start-tasks">{{ $date['start_tasks'] }}</div>
