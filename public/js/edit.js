@@ -25,8 +25,8 @@ $(function() {
               type: 'delete',
           })
           .done(function (data) {
-            $(clickedDom).parents('.task').remove();
             $(clickedDom).parents('.task').next('.task-id').remove();
+            $(clickedDom).parents('.task').remove();
           })
           .fail(function (jqXHR, textStatus, errorThrown) {
             console.log(jqXHR.responseText);
