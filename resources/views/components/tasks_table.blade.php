@@ -24,5 +24,5 @@
   </tbody>
 </table>
 @else
-<p>タスクなし</p>
+<p class="no-task">タスクなし</p>
 @endif

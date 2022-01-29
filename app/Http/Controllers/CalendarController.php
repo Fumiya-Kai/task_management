@@ -28,7 +28,9 @@ class CalendarController extends Controller
         $startTasks = $this->task->getStartTasks($date);
         $inProgressTasks = $this->task->getTasksInProgress($date);
         $endTasks = $this->task->getCompletedTasks($date);
+        $allTasks = $startTasks->merge($inProgressTasks)->merge($endTasks);
         $targetGroup = $this->task->getTargetGroup();
-        return view('calendar.show', compact('date', 'startTasks', 'inProgressTasks', 'endTasks', 'targetGroup'));
+        return view('calendar.show', compact('date', 'startTasks', 'inProgressTasks', 'endTasks', 'allTasks', 'targetGroup'));
     }
+
 }
