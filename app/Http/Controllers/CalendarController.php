@@ -12,7 +12,7 @@ class CalendarController extends Controller
 
     public function __construct(Task $task)
     {
-        $task = $this->task;
+        $this->task = $task;
     }
     public function index(Request $request)
     {
@@ -28,7 +28,7 @@ class CalendarController extends Controller
         $startTasks = $this->task->getStartTasks($date);
         $inProgressTasks = $this->task->getTasksInProgress($date);
         $endTasks = $this->task->getCompletedTasks($date);
-        $targetGroup = $this->getTargetGroup();
-        return view('calendar.show', compact('startTasks', 'inProgressTasks', 'endTasks', 'targetGroup'));
+        $targetGroup = $this->task->getTargetGroup();
+        return view('calendar.show', compact('date', 'startTasks', 'inProgressTasks', 'endTasks', 'targetGroup'));
     }
 }

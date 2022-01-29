@@ -17,20 +17,20 @@ class Task extends Model
 
     public function getStartTasks($date)
     {
-        return $this->whereDate('start', '=', $date->format('Y-m-d'))
+        return $this->whereDate('start', '=', $date)
                     ->get();
     }
 
     public function getTasksInProgress($date)
     {
-        return $this->whereDate('start', '<=', $date->format('Y-m-d'))
-                    ->whereDate('end_schedule', '>=', $date->format('Y-m-d'))
+        return $this->whereDate('start', '<=', $date)
+                    ->whereDate('end_schedule', '>=', $date)
                     ->get();
     }
 
     public function getCompletedTasks($date)
     {
-        return $this->whereDate('end_schedule', '=', $date->format('Y-m-d'))
+        return $this->whereDate('end_schedule', '=', $date)
                     ->get();
     }
 

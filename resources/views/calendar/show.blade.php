@@ -1,7 +1,7 @@
 @extends('common.user')
 @section('content')
 
-<h1 class="page-title">{{ $report->report_time->format('Y/m/d(D)') }}の日報</h1>
+<h1 class="page-title">{{ $date }}のタスク</h1>
 <div class="contents-wrapper">
   <div class="show-wrapper clearfix">
     <div class="task-all">

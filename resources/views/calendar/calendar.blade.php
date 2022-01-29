@@ -43,4 +43,6 @@
   </div>
 </div>
 
+<script src="{{ asset('js/calendar/calendar.js') }}"></script>
+
 @endsection
