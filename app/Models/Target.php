@@ -27,42 +27,21 @@ class Target extends Model
     {
         DB::transaction(function () use ($input) {
             $this->fill($input['targetData'])->save();
-            $input['taskData'] = $this->addDataForNew($this->id, $input['taskData']);
-            DB::table('tasks')->insert($input['taskData']);
+            $task = new Task();
+            $task->createTasks($this->id, $input['taskData']);
         });
     }
 
-    public function updateTarget($targetId, $input)
+    public function updateTarget($targetId, $targetData)
     {
-        DB::transaction(function () use ($targetId, $input) {
-            $this->find($targetId)->fill($input['targetData'])->save();
-            foreach ($input['taskData'] as $taskData) {
-                if (!array_key_exists('id', $taskData)) {
-                    $taskData += array('target_id' => $targetId);
-                    $task = new Task();
-                    $task->fill($taskData)->save();
-                } else {
-                    $task = Task::find($taskData['id']);
-                    unset($taskData['id']);
-                    $task->fill($taskData)->save();
-                };
-            }
-        });
+        $this->find($targetId)
+             ->fill($targetData)
+             ->save();
     }
 
     public function tasks()
     {
         return $this->hasMany(Task::class, 'target_id');
     }
-
-    private function addDataForNew($targetId, $array)
-    {
-        return array_map(function ($taskData) use ($targetId) {
-            return $taskData += array('target_id' => $targetId,
-                                      'created_at' => Carbon::now(),
-                                      'updated_at' => Carbon::now());
-            }, $array);
-    }
-
 
 }

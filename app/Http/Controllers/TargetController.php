@@ -3,15 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Target;
+use App\Models\Task;
 use Illuminate\Http\Request;
 
 class TargetController extends Controller
 {
     private $target;
+    private $task;
 
-    public function __construct(Target $target)
+    public function __construct(Target $target, Task $task)
     {
         $this->target = $target;
+        $this->task = $task;
     }
 
     public function index()
@@ -49,7 +52,8 @@ class TargetController extends Controller
     public function update($targetId, Request $request)
     {
         $input = $request->all();
-        $this->target->updateTarget($targetId, $input);
+        $this->target->updateTarget($targetId, $input['targetData']);
+        $this->task->updateTasks($targetId, $input['taskData']);
         return redirect()->route('target.show', $targetId);
     }
 }

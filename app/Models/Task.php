@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Task extends Model
 {
@@ -14,6 +16,37 @@ class Task extends Model
         'end',
         'order'
     ];
+
+    public function createTasks($targetId, $taskData)
+    {
+        $taskData = $this->addDataForNew($targetId, $taskData);
+        DB::table('tasks')->insert($taskData);
+    }
+
+    public function updateTasks($targetId, $taskData)
+    {
+        DB::transaction(function () use ($targetId, $taskData) {
+            foreach ($taskData as $data) {
+                if (!array_key_exists('id', $data)) {
+                    $data += array('target_id' => $targetId);
+                    $this->fill($data)->save();
+                } else {
+                    $task = $this->find($data['id']);
+                    unset($data['id']);
+                    $task->fill($data)->save();
+                };
+            }
+        });
+    }
+
+    private function addDataForNew($targetId, $array)
+    {
+        return array_map(function ($taskData) use ($targetId) {
+            return $taskData += array('target_id' => $targetId,
+                                      'created_at' => Carbon::now(),
+                                      'updated_at' => Carbon::now());
+            }, $array);
+    }
 
     public function getStartTasks($date)
     {
