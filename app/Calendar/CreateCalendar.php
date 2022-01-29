@@ -79,10 +79,14 @@ class CreateCalendar {
     {
         if ($week) {
             foreach ($period as $oneDay) {
+                $year = $oneDay->year;
+                $month = $oneDay->month;
                 $day_of_week = $oneDay->dayOfWeek;
                 $day = $oneDay->day;
 
                 $dateArray = [
+                    'year' => $year,
+                    'month' => $month,
                     'week' => $week,
                     'day_of_week' => $day_of_week,
                     'day' => $day,
@@ -95,11 +99,15 @@ class CreateCalendar {
             }
         } else {
             foreach ($period as $oneDay) {
+                $year = $oneDay->year;
+                $month = $oneDay->month;
                 $week = $oneDay->weekNumberInMonth + (int)$this->isSunday($oneDay) - (int)$this->isSunday($startOfMonth);
                 $day_of_week = $oneDay->dayOfWeek;
                 $day = $oneDay->day;
 
                 $dateArray = [
+                    'year' => $year,
+                    'month' => $month,
                     'week' => $week,
                     'day_of_week' => $day_of_week,
                     'day' => $day,
